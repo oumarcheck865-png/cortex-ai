@@ -41,6 +41,19 @@ Wire it to your auth service:
 | `CORTEX_GITHUB_TOKEN`     | Only if you use GitHub automations           | _empty_ |
 | `CORTEX_SLACK_BOT_TOKEN`  | Only if you use Slack automations            | _empty_ |
 
+## Platform launcher (`cortex-launch.mjs`)
+
+These control the single-origin platform launcher (ingress + SPA + landing on one port).
+
+| Variable                    | Description                                            | Default                     |
+| --------------------------- | ------------------------------------------------------ | --------------------------- |
+| `CORTEX_PORT`               | Public port the ingress listens on                     | `12001`                     |
+| `CORTEX_AGENT_SERVER_URL`   | Your agent server (API / WebSocket / health)           | `http://localhost:18000`    |
+| `CORTEX_LANDING_PORT`       | Internal landing (Next.js) port                        | `3000`                      |
+| `CORTEX_SPA_PORT`           | Internal Cortex AI SPA port                            | `3001`                      |
+| `CORTEX_SKIP_LANDING`       | Skip starting the landing server                       | _unset_                     |
+| `CORTEX_SKIP_SPA`           | Skip starting the SPA server                           | _unset_                     |
+
 ## Landing app (Next.js)
 
 | Variable                       | Description                | Example                        |

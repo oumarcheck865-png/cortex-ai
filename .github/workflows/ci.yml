@@ -35,6 +35,40 @@ jobs:
       - name: Build
         run: npm run build
 
+  app:
+    name: App (OpenHands runtime) — Cortex build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build Cortex AI SPA (base path /app)
+        env:
+          VITE_BASE_PATH: /app
+          VITE_MOCK_API: "false"
+        run: npm run build:app
+
+      - name: Inject Cortex auth guard
+        run: node scripts/cortex-postbuild.mjs
+
+      - name: Verify build output
+        run: |
+          test -f build/index.html
+          grep -q "cortex-ai.session" build/index.html
+          grep -q "Cortex AI" build/index.html
+
   security:
     name: Security — secret scanning
     runs-on: ubuntu-latest
