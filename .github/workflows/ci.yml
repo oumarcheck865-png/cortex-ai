@@ -2,9 +2,15 @@ name: CI
 
 on:
   push:
-    branches: [main, feat/cortex-platform-bootstrap, feat/cortex-platform-integration]
+    branches: [main]
   pull_request:
     branches: [main]
+
+# Cancel superseded runs on the same ref so a re-push doesn't leave stale,
+# possibly-flaky jobs reporting against an old commit.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
