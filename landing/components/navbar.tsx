@@ -8,16 +8,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import ThemeSwitcher from "@/components/theme-switcher";
+import { CortexMark } from "@/components/cortex-mark";
 import {
   ChevronDownIcon,
-  FaceIcon,
   GlobeIcon,
-  OpenInNewWindowIcon,
-  PersonIcon,
   TimerIcon,
   HamburgerMenuIcon,
   Cross1Icon,
+  ExitIcon,
+  ArrowRightIcon,
 } from "@radix-ui/react-icons";
+import { BrainIcon, CpuIcon, ShieldIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -40,8 +41,10 @@ export default function NavBar() {
   }, []);
 
   const menuItems = [
+    { name: "Features", href: "#features" },
     { name: "Pricing", href: "#pricing" },
     { name: "Testimonials", href: "#testimonials" },
+    { name: "FAQ", href: "#faq" },
   ];
 
   const showNavbarBlur = isScrolled || isMenuOpen;
@@ -71,15 +74,26 @@ export default function NavBar() {
               </motion.div>
             </Button>
           </div>
-          <div className="flex sm:hidden">
-            <Link href="/" className="font-light tracking-tighter text-lg">
-              Acme
+          <div className="flex sm:hidden items-center gap-2">
+            <Link href="/" className="flex items-center gap-2">
+              <CortexMark className="size-6" />
+              <span className="font-medium tracking-tighter text-lg">
+                Cortex AI
+              </span>
             </Link>
           </div>
           <div className="hidden sm:flex items-center space-x-8">
-            <Link href="/" className="font-light tracking-tighter text-2xl">
-              Acme
+            <Link
+              href="/"
+              className="flex items-center gap-2 font-medium tracking-tighter text-xl"
+            >
+              <CortexMark className="size-6" />
+              <span>Cortex AI</span>
             </Link>
+
+            <Button asChild variant="ghost" size="sm">
+              <Link href="#features">Features</Link>
+            </Button>
 
             <Button asChild variant="ghost" size="sm">
               <Link href="#pricing">Pricing</Link>
@@ -92,81 +106,75 @@ export default function NavBar() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm">
-                  Dropdown
+                  Platform
                   <ChevronDownIcon className="ml-1 h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-80">
                 <DropdownMenuItem>
-                  <OpenInNewWindowIcon className="mr-2 h-4 w-4" />
+                  <BrainIcon className="mr-2 h-4 w-4" />
                   <div>
-                    <div className="font-semibold">Autoscaling</div>
+                    <div className="font-semibold">Autonomous Agents</div>
                     <div className="text-sm text-muted-foreground">
-                      ACME scales apps to meet user demand, automagically, based
-                      on load.
+                      Cortex AI agents plan, execute, and verify complex software
+                      tasks end-to-end.
                     </div>
                   </div>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <PersonIcon className="mr-2 h-4 w-4" />
+                  <CpuIcon className="mr-2 h-4 w-4" />
                   <div>
-                    <div className="font-semibold">Usage Metrics</div>
+                    <div className="font-semibold">Bring Your Own Model</div>
                     <div className="text-sm text-muted-foreground">
-                      Real-time metrics to debug issues. Slow query added?
-                      We&apos;ll show you exactly where.
+                      Connect your own LLM, your own GPU resources, and your own
+                      APIs. No vendor lock-in.
                     </div>
                   </div>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <GlobeIcon className="mr-2 h-4 w-4" />
                   <div>
-                    <div className="font-semibold">Production Ready</div>
+                    <div className="font-semibold">Self-Hostable</div>
                     <div className="text-sm text-muted-foreground">
-                      ACME runs on ACME, join us and others serving requests at
-                      web scale.
+                      Run Cortex AI locally, in Docker, on VMs, or inside your
+                      own infrastructure.
+                    </div>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <ShieldIcon className="mr-2 h-4 w-4" />
+                  <div>
+                    <div className="font-semibold">Independent &amp; Secure</div>
+                    <div className="text-sm text-muted-foreground">
+                      No embedded API keys, no mandatory cloud, no required
+                      telemetry. You stay in control.
                     </div>
                   </div>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <TimerIcon className="mr-2 h-4 w-4" />
                   <div>
-                    <div className="font-semibold">+99% Uptime</div>
+                    <div className="font-semibold">Automations &amp; Workflows</div>
                     <div className="text-sm text-muted-foreground">
-                      Applications stay on the grid with high availability and
-                      high uptime guarantees.
-                    </div>
-                  </div>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <FaceIcon className="mr-2 h-4 w-4" />
-                  <div>
-                    <div className="font-semibold">+Supreme Support</div>
-                    <div className="text-sm text-muted-foreground">
-                      Overcome any challenge with a supporting team ready to
-                      respond.
+                      Schedule agents or trigger them from Slack, GitHub, Linear,
+                      and webhooks.
                     </div>
                   </div>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
-          <div className="flex items-center space-x-4">
-            <Button asChild className="hidden sm:flex" size="sm">
-              <Link href="https://x.com/gonzalochale" target="_blank">
-                Connect on{" "}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="12"
-                  height="12"
-                  fill="none"
-                  viewBox="0 0 1200 1227"
-                  className="ml-1 size-4"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M714.163 519.284 1160.89 0h-105.86L667.137 450.887 357.328 0H0l468.492 681.821L0 1226.37h105.866l409.625-476.152 327.181 476.152H1200L714.137 519.284h.026ZM569.165 687.828l-47.468-67.894-377.686-540.24h162.604l304.797 435.991 47.468 67.894 396.2 566.721H892.476L569.165 687.854v-.026Z"
-                  />
-                </svg>
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <Button asChild variant="ghost" size="sm" className="hidden sm:flex">
+              <Link href="/login">
+                <ExitIcon className="mr-1 h-4 w-4" />
+                Connexion
+              </Link>
+            </Button>
+            <Button asChild size="sm">
+              <Link href="/signup">
+                Inscription
+                <ArrowRightIcon className="ml-1 h-4 w-4" />
               </Link>
             </Button>
             <ThemeSwitcher />
@@ -208,29 +216,18 @@ export default function NavBar() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: 0.4 }}
-                  className=""
+                  className="flex flex-col gap-2 pt-2"
                 >
-                  <Link
-                    href="https://x.com/gonzalochale"
-                    target="_blank"
-                    className="flex items-center gap-1 whitespace-nowrap px-3 py-2 text-base font-medium text-foreground hover:bg-muted rounded-md transition-colors duration-200"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <span>Connect on</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      viewBox="0 0 1200 1227"
-                      className="size-3"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M714.163 519.284 1160.89 0h-105.86L667.137 450.887 357.328 0H0l468.492 681.821L0 1226.37h105.866l409.625-476.152 327.181 476.152H1200L714.137 519.284h.026ZM569.165 687.828l-47.468-67.894-377.686-540.24h162.604l304.797 435.991 47.468 67.894 396.2 566.721H892.476L569.165 687.854v-.026Z"
-                      />
-                    </svg>
-                  </Link>
+                  <Button asChild variant="outline" size="sm">
+                    <Link href="/login" onClick={() => setIsMenuOpen(false)}>
+                      Connexion
+                    </Link>
+                  </Button>
+                  <Button asChild size="sm">
+                    <Link href="/signup" onClick={() => setIsMenuOpen(false)}>
+                      Inscription
+                    </Link>
+                  </Button>
                 </motion.div>
               </motion.div>
             </motion.div>

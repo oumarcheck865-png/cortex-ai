@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Accordion,
   AccordionContent,
@@ -10,54 +11,52 @@ import { motion } from "framer-motion";
 export default function Faq() {
   const accordionItems = [
     {
-      title: "This template is Free?",
+      title: "Do I need a cloud account to use Cortex AI?",
       content: (
         <div className="text-muted-foreground">
-          Yes, this template is free. You can use it for personal or commercial
-          purposes.
+          No. Cortex AI is self-hostable by default and has no mandatory cloud
+          dependency. You can run it locally, in Docker, on a VM, or inside your
+          own infrastructure.
         </div>
       ),
     },
     {
-      title: "There are more templates?",
+      title: "Can I use my own LLM?",
       content: (
         <div className="text-muted-foreground">
-          Yes, there are more templates available. You can find them here:{" "}
-          <a
-            href="https://x.com/gonzalochale"
-            target="_blank"
-            rel="noreferrer"
-            className="text-primary underline"
-          >
-            gonzalochale.dev
-          </a>
+          Yes. Cortex AI is model-agnostic. Connect any LLM provider, a local
+          model, or any OpenAI-compatible endpoint. There are no embedded API
+          keys — you configure your own.
         </div>
       ),
     },
     {
-      title: "How can I use this template?",
+      title: "Can I connect my own GPU resources?",
       content: (
         <div className="text-muted-foreground">
-          You can use this template by cloning it from{" "}
-          <a
-            href="https://github.com/gonzalochale/nextui-saas-landing-template"
-            className="text-primary underline"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-          .
+          Yes. Point Cortex AI at your own servers and GPU resources. The
+          architecture is designed so you bring your own compute, your own
+          models, and your own APIs.
         </div>
       ),
     },
     {
-      title: "How can I contribute to this template?",
+      title: "Is there telemetry or tracking?",
       content: (
         <div className="text-muted-foreground">
-          You can contribute to this template by forking it on GitHub and
-          submitting a pull request. You can also report any issues or bugs you
-          encounter while using the template.
+          Cortex AI has no required telemetry. Any analytics are opt-in and can
+          be fully disabled. You stay in control of your data.
+        </div>
+      ),
+    },
+    {
+      title: "What is included from OpenHands?",
+      content: (
+        <div className="text-muted-foreground">
+          Cortex AI integrates the full OpenHands runtime: conversational AI,
+          conversation history, autonomous agents, terminal, code execution,
+          file management, MCP, Skills, workflows, real-time WebSocket events,
+          and settings.
         </div>
       ),
     },
@@ -65,6 +64,7 @@ export default function Faq() {
 
   return (
     <motion.section
+      id="faq"
       initial={{ y: 20, opacity: 0 }}
       whileInView={{
         y: 0,
@@ -79,7 +79,7 @@ export default function Faq() {
           FAQ
         </h4>
         <p className="max-w-xl text-muted-foreground text-center">
-          Here are some of our frequently asked questions.
+          Frequently asked questions about Cortex AI.
         </p>
       </div>
       <div className="flex w-full max-w-lg">

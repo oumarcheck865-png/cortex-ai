@@ -1,17 +1,30 @@
 "use client";
-/* eslint-disable @next/next/no-img-element */
+
 import { Button } from "@/components/ui/button";
+import { CortexMark } from "@/components/cortex-mark";
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+  BrainCircuitIcon,
+  CpuIcon,
+  ShieldIcon,
+  GlobeIcon,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+
+const highlights = [
+  {
+    icon: CpuIcon,
+    label: "Bring your own model",
+  },
+  {
+    icon: ShieldIcon,
+    label: "No vendor lock-in",
+  },
+  {
+    icon: GlobeIcon,
+    label: "Self-hostable",
+  },
+];
 
 export default function Hero() {
   return (
@@ -26,53 +39,44 @@ export default function Hero() {
           transition={{ duration: 0.6, type: "spring", bounce: 0 }}
           className="flex flex-col justify-center items-center space-y-5 max-w-4xl mx-auto text-center"
         >
-          <span className="w-fit h-full text-sm bg-card px-2 py-1 border border-border rounded-full">
-            New template!
+          <span className="w-fit h-full text-sm bg-card px-3 py-1 border border-border rounded-full inline-flex items-center gap-2">
+            <BrainCircuitIcon className="size-3.5" />
+            Autonomous AI agent platform
           </span>
-          <h1 className="text-4xl font-medium tracking-tighter mx-auto md:text-6xl text-pretty bg-linear-to-b from-sky-800 dark:from-sky-100 to-foreground dark:to-foreground bg-clip-text text-transparent">
-            Beautiful Landing Page Template for SaaS Startups
+          <h1 className="text-4xl font-medium tracking-tighter mx-auto md:text-6xl text-pretty bg-linear-to-b from-indigo-700 dark:from-indigo-300 to-foreground dark:to-foreground bg-clip-text text-transparent">
+            The autonomous AI platform you fully control
           </h1>
           <p className="max-w-2xl text-lg mx-auto text-muted-foreground text-balance">
-            Create your next landing page using this free template.
+            Cortex AI turns autonomous agents into a self-hosted engineering
+            team. Bring your own LLM, your own GPU, and your own APIs — no
+            embedded keys, no mandatory cloud, no required telemetry.
           </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 pt-2">
+            {highlights.map((h) => (
+              <span
+                key={h.label}
+                className="inline-flex items-center gap-1.5 text-sm text-muted-foreground"
+              >
+                <h.icon className="size-4 text-primary" />
+                {h.label}
+              </span>
+            ))}
+          </div>
+
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="items-center justify-center gap-x-3 space-y-3 sm:flex sm:space-y-0"
+            className="items-center justify-center gap-x-3 space-y-3 sm:flex sm:space-y-0 pt-2"
           >
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button className="shadow-lg">See more</Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Gonzalo Chalé</DialogTitle>
-                  <DialogDescription>
-                    I&apos;m Software Engineer from Cancún, México, always
-                    building things for the web.
-                  </DialogDescription>
-                </DialogHeader>
-                <DialogFooter>
-                  <Button asChild size="sm">
-                    <Link href="https://x.com/gonzalochale" target="_blank">
-                      Connect on{" "}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="12"
-                        height="12"
-                        fill="none"
-                        viewBox="0 0 1200 1227"
-                        className="ml-1"
-                      >
-                        <path
-                          fill="currentColor"
-                          d="M714.163 519.284 1160.89 0h-105.86L667.137 450.887 357.328 0H0l468.492 681.821L0 1226.37h105.866l409.625-476.152 327.181 476.152H1200L714.137 519.284h.026ZM569.165 687.828l-47.468-67.894-377.686-540.24h162.604l304.797 435.991 47.468 67.894 396.2 566.721H892.476L569.165 687.854v-.026Z"
-                        />
-                      </svg>
-                    </Link>
-                  </Button>
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
+            <Button asChild size="lg" className="shadow-lg">
+              <Link href="/signup">
+                Start building free
+                <CortexMark className="ml-2 size-4" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <Link href="/login">Connexion</Link>
+            </Button>
           </motion.div>
         </motion.div>
       </section>

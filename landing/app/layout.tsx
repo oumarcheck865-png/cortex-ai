@@ -9,8 +9,9 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "SaaS Landing Template",
-  description: "Landing Page template.",
+  title: "Cortex AI — Autonomous AI Agent Platform",
+  description:
+    "Cortex AI is a self-hosted, model-agnostic platform for autonomous AI agents. Bring your own LLM, GPU, and APIs.",
 };
 
 export default function RootLayout({

@@ -2,30 +2,29 @@
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { CortexMark } from "@/components/cortex-mark";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { GitHubLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 const Footer = () => {
   const year = new Date().getFullYear();
 
   const socialLinks = [
     {
-      name: "Twitter",
-      href: "https://x.com/gonzalochale",
-      icon: TwitterLogoIcon,
-    },
-    {
       name: "GitHub",
-      href: "https://github.com/gonzalochale",
+      href: "https://github.com/oumarcheck865-png/cortex-ai",
       icon: GitHubLogoIcon,
     },
   ];
 
   const footerLinks = [
+    { name: "Features", href: "#features" },
     { name: "Pricing", href: "#pricing" },
     { name: "Testimonials", href: "#testimonials" },
-    { name: "Get Started", href: "#" },
+    { name: "FAQ", href: "#faq" },
+    { name: "Connexion", href: "/login" },
+    { name: "Inscription", href: "/signup" },
   ];
 
   return (
@@ -42,13 +41,14 @@ const Footer = () => {
             <div className="space-y-3">
               <Link
                 href="/"
-                className="inline-block text-xl font-medium tracking-tight transition-opacity hover:opacity-80"
+                className="inline-flex items-center gap-2 text-xl font-medium tracking-tight transition-opacity hover:opacity-80"
               >
-                Acme
+                <CortexMark className="size-6" />
+                Cortex AI
               </Link>
               <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-                Build and scale your product faster with a platform designed for
-                modern teams.
+                The autonomous AI platform you fully control. Self-hostable,
+                model-agnostic, and independent of any mandatory cloud.
               </p>
             </div>
 
@@ -95,8 +95,8 @@ const Footer = () => {
           <Separator />
 
           <div className="flex flex-col items-center justify-between gap-2 text-center text-sm text-muted-foreground sm:flex-row sm:text-left">
-            <span>© {year} Acme. All rights reserved.</span>
-            <span className="font-medium">#BuildingInPublic</span>
+            <span>© {year} Cortex AI. All rights reserved.</span>
+            <span className="font-medium">Built on the OpenHands runtime</span>
           </div>
         </motion.div>
       </div>

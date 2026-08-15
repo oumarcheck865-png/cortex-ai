@@ -8,10 +8,10 @@ export default function Stats() {
   const [animate, setAnimate] = useState(false);
 
   const stats = [
-    { value: 50, suffix: "K+", label: "Active Users" },
-    { value: 99.9, suffix: "%", label: "Uptime" },
-    { value: 500, suffix: "M+", label: "API Calls" },
-    { value: 150, suffix: "+", label: "Countries" },
+    { value: 50, suffix: "K+", label: "Conversations run" },
+    { value: 99.9, suffix: "%", label: "Agent reliability" },
+    { value: 120, suffix: "+", label: "Integrations" },
+    { value: 100, suffix: "%", label: "Self-hostable" },
   ];
 
   return (

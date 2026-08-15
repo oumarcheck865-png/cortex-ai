@@ -5,44 +5,47 @@ import { Separator } from "@/components/ui/separator";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { CheckIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
 
 export default function Pricing() {
   const plans = [
     {
-      name: "Hobby Plan",
-      desc: "Perfect for getting started",
+      name: "Developer",
+      desc: "For individuals exploring autonomous agents",
       price: 0,
       isMostPop: false,
       features: [
-        "Make the best schedule",
-        "Support your team",
-        "Basic analytics",
+        "Self-host locally",
+        "Bring your own model",
+        "Conversations & history",
+        "Terminal & file management",
+        "MCP & Skills",
       ],
     },
     {
-      name: "Pro Plan",
-      desc: "Best for growing teams",
+      name: "Team",
+      desc: "For growing engineering teams",
       price: 29,
       isMostPop: true,
       features: [
-        "Everything in Hobby",
-        "Advanced team features",
+        "Everything in Developer",
+        "Shared agent backends",
+        "Automations & workflows",
+        "Slack / GitHub / Linear triggers",
         "Priority support",
-        "Video calls",
-        "Custom integrations",
       ],
     },
     {
-      name: "Enterprise Plan",
-      desc: "For large organizations",
+      name: "Enterprise",
+      desc: "For organizations at scale",
       price: 99,
       isMostPop: false,
       features: [
-        "Everything in Pro",
-        "Advanced security",
-        "Custom branding",
-        "Dedicated support",
-        "SLA guarantee",
+        "Everything in Team",
+        "Self-host on your infrastructure",
+        "Custom GPU & model routing",
+        "SSO & advanced security",
+        "SLA & dedicated support",
       ],
     },
   ];
@@ -60,11 +63,11 @@ export default function Pricing() {
         className="mb-12 flex flex-col gap-3 text-center sm:mb-16"
       >
         <h2 className="text-xl font-semibold sm:text-2xl bg-linear-to-b from-foreground to-muted-foreground text-transparent bg-clip-text">
-          Choose Your Plan
+          Choose your plan
         </h2>
         <p className="mx-auto max-w-xl text-muted-foreground text-center">
-          Select the perfect plan for your needs. Upgrade or downgrade at any
-          time.
+          Self-host for free, or upgrade for shared backends and automations.
+          Upgrade or downgrade at any time.
         </p>
       </motion.div>
 
@@ -128,11 +131,14 @@ export default function Pricing() {
 
               <CardFooter className="p-4 pt-0 sm:p-6 sm:pt-0">
                 <Button
+                  asChild
                   className="w-full"
                   variant={plan.isMostPop ? "default" : "outline"}
                   size="lg"
                 >
-                  {plan.price === 0 ? "Get Started Free" : "Choose Plan"}
+                  <Link href={plan.price === 0 ? "/signup" : "/login"}>
+                    {plan.price === 0 ? "Get Started Free" : "Choose Plan"}
+                  </Link>
                 </Button>
               </CardFooter>
             </Card>
