@@ -1,4 +1,4 @@
-import OpenHandsLogo from "#/assets/branding/openhands-logo.svg?react";
+import CortexLogo from "#/assets/branding/cortex-logo.svg?react";
 import TerminalIcon from "#/icons/terminal.svg?react";
 import {
   CLAUDE_CODE_MARK_PATH,
@@ -44,7 +44,7 @@ export function AgentBrandIcon({
     // inherits the chip's text color *without* filling in the hands — a
     // blanket ``[&_path]`` selector turns the whole mark into a solid blob.
     return (
-      <OpenHandsLogo
+      <CortexLogo
         width={Math.round(size * OPENHANDS_LOGO_ASPECT_RATIO)}
         height={size}
         className={cn(

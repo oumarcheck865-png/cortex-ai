@@ -1,7 +1,7 @@
 {
-  "name": "@openhands/agent-canvas",
+  "name": "@cortex-ai/app",
   "version": "1.13.0",
-  "description": "Agent Canvas UI for OpenHands - run AI coding agents with a visual interface",
+  "description": "Cortex AI — autonomous AI agent platform (OpenHands runtime, rebranded)",
   "license": "MIT",
   "private": false,
   "type": "module",

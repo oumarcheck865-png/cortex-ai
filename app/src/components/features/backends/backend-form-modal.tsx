@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { ChevronDown, Globe, Info, Monitor } from "lucide-react";
 import { ServerClient } from "@openhands/typescript-client/clients";
-import OpenHandsLogoWhite from "#/assets/branding/openhands-logo-white.svg?react";
+import CortexLogoWhite from "#/assets/branding/cortex-logo-white.svg?react";
 import { ModalBackdrop } from "#/components/shared/modals/modal-backdrop";
 import {
   MODAL_MAX_WIDTH_VIEWPORT,
@@ -1006,7 +1006,7 @@ function CloudLoginColumn({
     <div className="flex w-full min-w-0 flex-col items-center gap-3">
       {showBranding ? (
         <div className="flex flex-col items-center gap-1">
-          <OpenHandsLogoWhite width={56} height={56} aria-hidden />
+          <CortexLogoWhite width={56} height={56} aria-hidden />
 
           <h4
             className={modalTitleLgMediumClassName}
@@ -1375,7 +1375,7 @@ function AddBackendChooser({
           title={t(I18nKey.BACKEND$CLOUD_TITLE)}
           description={t(I18nKey.BACKEND$CLOUD_OPTION_DESCRIPTION)}
           icon={
-            <OpenHandsLogoWhite
+            <CortexLogoWhite
               width={32}
               height={32}
               data-testid="add-backend-option-cloud-logo"

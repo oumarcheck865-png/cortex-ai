@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import OpenHandsLogo from "#/assets/branding/openhands-logo.svg?react";
+import CortexLogo from "#/assets/branding/cortex-logo.svg?react";
 import { NavigationLink } from "#/components/shared/navigation-link";
 import { I18nKey } from "#/i18n/declaration";
 import { cn } from "#/utils/utils";
@@ -31,7 +31,7 @@ export function OpenHandsLogoButton({
       aria-label={ariaLabel}
       className={cn(className)}
     >
-      <OpenHandsLogo
+      <CortexLogo
         width={logoWidth}
         height={logoHeight}
         className={cn("shrink-0", logoClassName)}
