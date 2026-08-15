@@ -5,6 +5,7 @@
 - Working dir: `/workspace/project` (the cortex-ai repo itself)
 - Monorepo: `app/` (OpenHands runtime, rebranded), `landing/` (Next.js SaaS template, rebranded), `docs/`, `.github/`
 - Bootstrap PR: https://github.com/oumarcheck865-png/cortex-ai/pull/1 (branch `feat/cortex-platform-bootstrap`)
+- Rebrand test-fix PR: https://github.com/oumarcheck865-png/cortex-ai/pull/3 (branch `fix/rebrand-test-regressions`, merged) — completed the rebrand in test assertions (app title → "Cortex AI", package name → `@cortex-ai/app`) and added the `app` CI job (Vitest suite).
 
 ## Auth token quirks (IMPORTANT)
 - The `GITHUB_TOKEN` env var is a `ghu_` OAuth/App token (40 chars) with **no classic OAuth scopes** (`x-oauth-scopes:` header empty).
@@ -16,6 +17,10 @@
 - Dev: `PORT=12001 npm run dev` (host: https://work-2-rrmkyaetptsehlpt.prod-runtime.all-hands.dev/)
 - `next lint` is broken in Next 16 (`Invalid project directory ... lint`); use `npx tsc --noEmit` + `npm run build` for verification instead.
 - Auth: `landing/lib/auth.tsx` — `AuthProvider`/`useAuth()`, localStorage-backed, backend-ready.
+
+## CI
+- `.github/workflows/ci.yml` has 3 jobs: `landing` (tsc + next build), `app` (make-i18n + typecheck + `npm test` = full Vitest suite, 566 files / 4580 tests, ~13 min on CI), `security` (gitleaks, `continue-on-error`).
+- Local full app-test run: `cd app && npm run make-i18n && npx vitest run` (~7 min). After a rebrand that touches `package.json` name or `APP_TITLE`, also update: `app/src/hooks/use-app-title.test.tsx`, `app/__tests__/services/telemetry.test.ts` (package_name), `app/__tests__/package-library.test.ts` (package name) — and `app/package-lock.json` (run `npm install` to sync the lockfile's `name` field).
 
 ## OpenHands app (`app/`)
 - Rebranding applied ONLY to user-facing identity (translation.json 1023 strings, root.tsx, use-app-title, logos, favicon, package.json name `@cortex-ai/app`, README).
