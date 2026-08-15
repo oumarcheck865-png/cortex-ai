@@ -8,10 +8,10 @@ import {
 } from "#/themes/color-themes";
 
 describe("color themes", () => {
-  it("includes OpenHands-Neo as a neutral-based theme with white button tokens", () => {
+  it("includes Cortex-Neo as a neutral-based theme with white button tokens", () => {
     const neo = COLOR_THEMES["openhands-neo"];
 
-    expect(neo.label).toBe("OpenHands-Neo");
+    expect(neo.label).toBe("Cortex-Neo");
     expect(neo.scale).toEqual(COLOR_THEMES["openhands-neutral"].scale);
     expect(neo.heroui).toEqual(COLOR_THEMES["openhands-neutral"].heroui);
     expect(neo.tokens?.["--oh-color-primary"]).toBe("#ffffff");
@@ -25,10 +25,10 @@ describe("color themes", () => {
     expect(
       AVAILABLE_COLOR_THEMES.find((theme) => theme.key === "openhands-neo")
         ?.label,
-    ).toBe("OpenHands-Neo");
+    ).toBe("Cortex-Neo");
   });
 
-  it("injects white primary tokens when applying OpenHands-Neo", () => {
+  it("injects white primary tokens when applying Cortex-Neo", () => {
     document.body.setAttribute("data-agent-server-ui", "");
 
     applyColorTheme("openhands-neo");
