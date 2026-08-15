@@ -27,7 +27,7 @@ describe("package library metadata", () => {
   ]);
 
   it("publishes the agent-canvas package entrypoints", () => {
-    expect(packageJson.name).toBe("@openhands/agent-canvas");
+    expect(packageJson.name).toBe("@cortex-ai/app");
     expect(packageJson.main).toBe("./dist/index.cjs");
     expect(packageJson.module).toBe("./dist/index.js");
     expect(packageJson.types).toBe("./dist/index.d.ts");
