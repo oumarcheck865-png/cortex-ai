@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main, feat/cortex-platform-bootstrap]
+    branches: [main, feat/cortex-platform-bootstrap, feat/cortex-platform-integration]
   pull_request:
     branches: [main]
 
@@ -29,6 +29,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Clean stale build artifacts
+        run: rm -rf .next
+
       - name: Typecheck
         run: npx tsc --noEmit
 
@@ -36,7 +39,7 @@ jobs:
         run: npm run build
 
   app:
-    name: App (OpenHands runtime) — typecheck & tests
+    name: App (OpenHands runtime) — typecheck, tests & Cortex build
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -52,7 +55,7 @@ jobs:
           cache-dependency-path: app/package-lock.json
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install --no-audit --no-fund
 
       - name: Generate i18n declaration
         run: npm run make-i18n
@@ -62,6 +65,21 @@ jobs:
 
       - name: Test
         run: npm test
+
+      - name: Build Cortex AI SPA (base path /app)
+        env:
+          VITE_BASE_PATH: /app
+          VITE_MOCK_API: "false"
+        run: npm run build:app
+
+      - name: Inject Cortex auth guard
+        run: node scripts/cortex-postbuild.mjs
+
+      - name: Verify build output
+        run: |
+          test -f build/index.html
+          grep -q "cortex-ai.session" build/index.html
+          grep -q "Cortex AI" build/index.html
 
   security:
     name: Security — secret scanning
