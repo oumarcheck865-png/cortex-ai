@@ -1,0 +1,14 @@
+<svg width="148" height="100" viewBox="0 0 148 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cortex-grad-light" x1="0" y1="0" x2="148" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#0891b2"/>
+    </linearGradient>
+  </defs>
+  <circle cx="74" cy="50" r="20" fill="url(#cortex-grad-light)"/>
+  <circle cx="30" cy="30" r="8" fill="url(#cortex-grad-light)"/>
+  <circle cx="118" cy="30" r="8" fill="url(#cortex-grad-light)"/>
+  <circle cx="30" cy="70" r="8" fill="url(#cortex-grad-light)"/>
+  <circle cx="118" cy="70" r="8" fill="url(#cortex-grad-light)"/>
+  <path d="M30 30 L74 50 L118 30 M30 70 L74 50 L118 70" stroke="url(#cortex-grad-light)" stroke-width="3" stroke-linecap="round"/>
+</svg>

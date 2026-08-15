@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="cortex-bg" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="cortex-mark" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" rx="224" fill="url(#cortex-bg)"/>
+  <g fill="url(#cortex-mark)">
+    <circle cx="512" cy="512" r="150"/>
+    <circle cx="212" cy="312" r="60"/>
+    <circle cx="812" cy="312" r="60"/>
+    <circle cx="212" cy="712" r="60"/>
+    <circle cx="812" cy="712" r="60"/>
+  </g>
+  <g stroke="url(#cortex-mark)" stroke-width="26" stroke-linecap="round" fill="none">
+    <path d="M212 312 L512 512 L812 312"/>
+    <path d="M212 712 L512 512 L812 712"/>
+  </g>
+</svg>
