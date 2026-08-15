@@ -6,6 +6,7 @@
 - Monorepo: `app/` (OpenHands runtime, rebranded), `landing/` (Next.js SaaS template, rebranded), `docs/`, `.github/`
 - Bootstrap PR: https://github.com/oumarcheck865-png/cortex-ai/pull/1 (branch `feat/cortex-platform-bootstrap`)
 - Rebrand test-fix PR: https://github.com/oumarcheck865-png/cortex-ai/pull/3 (branch `fix/rebrand-test-regressions`, merged) — completed the rebrand in test assertions (app title → "Cortex AI", package name → `@cortex-ai/app`) and added the `app` CI job (Vitest suite).
+- Platform integration PR: https://github.com/oumarcheck865-png/cortex-ai/pull/2 (branch `feat/cortex-platform-integration`) — full OpenHands runtime under `/app`, single-origin launcher, auth guard, BYO-model. Rebased onto main + CI deduped.
 
 ## Auth token quirks (IMPORTANT)
 - The `GITHUB_TOKEN` env var is a `ghu_` OAuth/App token (40 chars) with **no classic OAuth scopes** (`x-oauth-scopes:` header empty).
@@ -19,7 +20,8 @@
 - Auth: `landing/lib/auth.tsx` — `AuthProvider`/`useAuth()`, localStorage-backed, backend-ready.
 
 ## CI
-- `.github/workflows/ci.yml` has 3 jobs: `landing` (tsc + next build), `app` (make-i18n + typecheck + `npm test` = full Vitest suite, 566 files / 4580 tests, ~13 min on CI), `security` (gitleaks, `continue-on-error`).
+- `.github/workflows/ci.yml` has 3 jobs: `landing` (clean `.next` → tsc → next build), `app` (install → make-i18n → typecheck → full Vitest suite 566 files / 4580 tests → Cortex SPA build `VITE_BASE_PATH=/app` → auth-guard injection → verify `cortex-ai.session` + "Cortex AI"), `security` (gitleaks, `continue-on-error`).
+- Workflow triggers `push` only on `[main]` (feature branches covered by `pull_request`) + a `concurrency` group cancels superseded runs — this avoids the duplicate-run flake where one of two identical app jobs occasionally failed while the other passed.
 - Local full app-test run: `cd app && npm run make-i18n && npx vitest run` (~7 min). After a rebrand that touches `package.json` name or `APP_TITLE`, also update: `app/src/hooks/use-app-title.test.tsx`, `app/__tests__/services/telemetry.test.ts` (package_name), `app/__tests__/package-library.test.ts` (package name) — and `app/package-lock.json` (run `npm install` to sync the lockfile's `name` field).
 
 ## OpenHands app (`app/`)
